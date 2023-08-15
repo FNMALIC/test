@@ -4,7 +4,7 @@ from .models import User
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['email_user', 'password_user']
+        fields = ['email', 'password_user']
 
 class UserProfileForm(forms.Form):
     GENDER_CHOICES = [

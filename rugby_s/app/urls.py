@@ -46,6 +46,10 @@ urlpatterns = [
 
 
     # users
-    path('login',login_page,name='registration'),  
+    path('register',login_page,name='register'),  
+    path('profile',edit_profile,name='profile'),  
+
+    path('dashboard/',dashboard_page,name='dashboard'),  
+    # path('profile',edit_profile,name='profile'),  
 
 ] 

@@ -1,8 +1,8 @@
 from django.db import models
+from .AbstractModel import BaseUser
 
-
-class User(models.Model):
-    id_user = models.IntegerField(primary_key=True)
+class User(BaseUser):
+    username = models.CharField(max_length=150, unique=False)
     first_name = models.CharField(max_length=50, null=True)
     last_name = models.CharField(max_length=50, null=True)
     date_birth = models.DateField(null=True)
@@ -16,7 +16,6 @@ class User(models.Model):
     favourite_language = models.CharField(max_length=60, null=True)
     club_coeur = models.CharField(max_length=60, null=True)
     sexe_user = models.CharField(max_length=50, null=True)
-    email_user = models.CharField(max_length=50, null=True)
     password_user = models.CharField(max_length=90, null=True)
     card_number = models.CharField(max_length=35, null=True)
     exp_date = models.CharField(max_length=35, null=True)
@@ -27,3 +26,12 @@ class User(models.Model):
     BIC_SWIFT = models.CharField(max_length=60, null=True)
     address_gmail = models.CharField(max_length=95, null=True)
     password_gmail = models.CharField(max_length=95, null=True)
+
+    USERNAME_FIELD = 'email'
+
+
+    def __str__(self):
+            return self.first_name
+    
+    class Meta:
+        db_table = 'user' 
