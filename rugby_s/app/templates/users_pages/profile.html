@@ -5004,92 +5004,27 @@
                           data-once="form-updated"
                           data-drupal-form-fields="edit-field-user-civility-m,edit-field-user-civility-mme,edit-field-user-civility-mx,edit-field-user-firstname-0-value,edit-field-user-lastname-0-value,edit-field-user-birthday-0-value-day,edit-field-user-birthday-0-value-month,edit-field-user-birthday-0-value-year,edit-field-user-mobile-0-value,edit-field-user-address-0-address-address-line1,edit-field-user-address-0-address-postal-code,edit-field-user-address-0-address-locality,edit-field-user-address-0-address-country-code--2,edit-field-optin-1,edit-field-optin-2,edit-preferred-langcode,edit-field-optin-13-0-value,edit-field-optlabel-13-0-value,edit-submit"
                         >
+                        {% csrf_token %}
                           <div
                             class="field--type-list-string field--name-field-user-civility field--widget-options-buttons js-form-wrapper form-group"
                             data-drupal-selector="edit-field-user-civility-wrapper"
                             id="edit-field-user-civility-wrapper"
                           >
-                            <fieldset
-                              data-drupal-selector="edit-field-user-civility"
-                              id="edit-field-user-civility--wrapper"
-                              class="fieldgroup form-composite required js-form-item form-item js-form-wrapper form-group"
-                              required="required"
-                              aria-required="true"
-                            >
-                              <legend>
-                                <span
-                                  data-optional-label="Optional"
-                                  class="fieldset-legend js-form-required form-required hide-required"
-                                  >Gender</span
-                                >
-                              </legend>
-                              <!-- {{ form.postal_code.label_tag }}: {{ form.postal_code }} -->
-
-                              <div class="fieldset-wrapper">
-                                <div
-                                  id="edit-field-user-civility"
-                                  class="radio-button-list radio"
-                                >
-                                  <div
-                                    class="js-form-item js-form-type-radio radio custom-control custom-radio js-form-item-field-user-civility form-item-field-user-civility is-checked"
-                                  >
-                                    <input
-                                      data-drupal-selector="edit-field-user-civility-m"
-                                      type="radio"
-                                      id="edit-field-user-civility-m"
-                                      name="field_user_civility"
-                                      value="M"
-                                      checked="checked"
-                                      class="form-radio custom-control-input"
-                                    />
-                                    <label
-                                      class="custom-control-label"
-                                      for="edit-field-user-civility-m"
-                                    >
-                                      Male
-                                    </label>
+                          <fieldset class="fieldgroup form-composite required js-form-item form-item js-form-wrapper form-group" required="required" aria-required="true">
+                            <legend>
+                              <span data-optional-label="Optional" class="fieldset-legend js-form-required form-required hide-required">Gender</span>
+                            </legend>
+                            <div class="fieldset-wrapper">
+                              <div id="edit-field-user-civility" class="radio-button-list radio">
+                                {% for choice in form.gender.field.choices %}
+                                  <div class="js-form-item js-form-type-radio radio custom-control custom-radio js-form-item-field-user-civility form-item-field-user-civility {% if choice.0 == form.gender.value %}is-checked{% endif %}">
+                                    <input data-drupal-selector="{{ form.gender.auto_id }}_{{ forloop.counter0 }}" type="radio" id="{{ form.gender.auto_id }}_{{ forloop.counter0 }}" name="{{ form.gender.html_name }}" value="{{ choice.0 }}" {% if choice.0 == form.gender.value %}checked{% endif %} class="form-radio custom-control-input">
+                                    <label class="custom-control-label" for="{{ form.gender.auto_id }}_{{ forloop.counter0 }}">{{ choice.1 }}</label>
                                   </div>
-
-                                  <div
-                                    class="js-form-item js-form-type-radio radio custom-control custom-radio js-form-item-field-user-civility form-item-field-user-civility"
-                                  >
-                                    <input
-                                      data-drupal-selector="edit-field-user-civility-mme"
-                                      type="radio"
-                                      id="edit-field-user-civility-mme"
-                                      name="field_user_civility"
-                                      value="Mme"
-                                      class="form-radio custom-control-input"
-                                    />
-                                    <label
-                                      class="custom-control-label"
-                                      for="edit-field-user-civility-mme"
-                                    >
-                                      Female
-                                    </label>
-                                  </div>
-
-                                  <div
-                                    class="js-form-item js-form-type-radio radio custom-control custom-radio js-form-item-field-user-civility form-item-field-user-civility"
-                                  >
-                                    <input
-                                      data-drupal-selector="edit-field-user-civility-mx"
-                                      type="radio"
-                                      id="edit-field-user-civility-mx"
-                                      name="field_user_civility"
-                                      value="Mx"
-                                      class="form-radio custom-control-input"
-                                    />
-                                    <label
-                                      class="custom-control-label"
-                                      for="edit-field-user-civility-mx"
-                                    >
-                                      prefer not to say
-                                    </label>
-                                  </div>
-                                </div>
+                                {% endfor %}
                               </div>
-                            </fieldset>
+                            </div>
+                          </fieldset>
                           </div>
                           <input
                             autocomplete="off"
@@ -5118,29 +5053,10 @@
                             data-drupal-selector="edit-field-user-firstname-wrapper"
                             id="edit-field-user-firstname-wrapper"
                           >
-                            <fieldset
-                              class="js-form-item js-form-type-textfield form-type-textfield js-form-item-field-user-firstname-0-value form-item-field-user-firstname-0-value form-group"
-                            >
-                              <label
-                                for="edit-field-user-firstname-0-value"
-                                data-optional-label="Optional"
-                                class="js-form-required form-required hide-required"
-                                ><span>First name</span></label
-                              >
-                              <input
-                                class="js-text-full text-full form-text required form-control"
-                                data-drupal-selector="edit-field-user-firstname-0-value"
-                                type="text"
-                                id="edit-field-user-firstname-0-value"
-                                name="field_user_firstname[0][value]"
-                                value="Adam"
-                                size="60"
-                                maxlength="255"
-                                placeholder=""
-                                required="required"
-                                aria-required="true"
-                              />
-                            </fieldset>
+                          <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-field-user-firstname-0-value form-item-field-user-firstname-0-value form-group">
+                            <label for="edit-field-user-firstname-0-value" data-optional-label="Optional" class="js-form-required form-required hide-required"><span>First name</span></label>
+                            <input class="js-text-full text-full form-text required form-control" data-drupal-selector="edit-field-user-firstname-0-value" type="text" id="edit-field-user-firstname-0-value" name="first_name" size="60" maxlength="255" placeholder="" required aria-required="true">
+                          </fieldset>
                           </div>
                           <div
                             class="field--type-string field--name-field-user-lastname field--widget-string-textfield js-form-wrapper form-group"
@@ -5161,8 +5077,8 @@
                                 data-drupal-selector="edit-field-user-lastname-0-value"
                                 type="text"
                                 id="edit-field-user-lastname-0-value"
-                                name="field_user_lastname[0][value]"
-                                value="Lucas"
+                                name="last_name"
+                                value=""
                                 size="60"
                                 maxlength="255"
                                 placeholder=""
@@ -5207,7 +5123,7 @@
                                       data-drupal-selector="edit-field-user-birthday-0-value-day"
                                       title="Day"
                                       id="edit-field-user-birthday-0-value-day"
-                                      name="field_user_birthday[0][value][day]"
+                                      name="day"
                                       class="form-select select2-widget custom-select select2-hidden-accessible"
                                       data-select2-config='{"multiple":false,"placeholder":{"id":"","text":"Day"},"allowClear":false,"dir":"ltr","language":"en","tags":false,"theme":"hubber_reference8","maximumSelectionLength":0,"tokenSeparators":[],"selectOnClose":false,"width":"100%","minimumResultsForSearch":-1}'
                                       data-select2-id="edit-field-user-birthday-0-value-day"
@@ -5301,7 +5217,7 @@
                                       data-drupal-selector="edit-field-user-birthday-0-value-month"
                                       title="Month"
                                       id="edit-field-user-birthday-0-value-month"
-                                      name="field_user_birthday[0][value][month]"
+                                      name="month"
                                       class="form-select select2-widget custom-select select2-hidden-accessible"
                                       data-select2-config='{"multiple":false,"placeholder":{"id":"","text":"Month"},"allowClear":false,"dir":"ltr","language":"en","tags":false,"theme":"hubber_reference8","maximumSelectionLength":0,"tokenSeparators":[],"selectOnClose":false,"width":"100%","minimumResultsForSearch":-1}'
                                       data-select2-id="edit-field-user-birthday-0-value-month"
@@ -5376,7 +5292,7 @@
                                       data-drupal-selector="edit-field-user-birthday-0-value-year"
                                       title="Year"
                                       id="edit-field-user-birthday-0-value-year"
-                                      name="field_user_birthday[0][value][year]"
+                                      name="year"
                                       class="form-select select2-widget custom-select select2-hidden-accessible"
                                       data-select2-config='{"multiple":false,"placeholder":{"id":"","text":"Year"},"allowClear":false,"dir":"ltr","language":"en","tags":false,"theme":"hubber_reference8","maximumSelectionLength":0,"tokenSeparators":[],"selectOnClose":false,"width":"100%","minimumResultsForSearch":-1}'
                                       data-select2-id="edit-field-user-birthday-0-value-year"
@@ -9222,7 +9138,7 @@
                                   data-drupal-selector="edit-field-user-mobile-0-value"
                                   type="tel"
                                   id="edit-field-user-mobile-0-value"
-                                  name="field_user_mobile[0][value]"
+                                  name="mobile"
                                   value="06 96 18 67 34"
                                   size="30"
                                   maxlength="128"
@@ -9260,7 +9176,7 @@
                                   <input
                                     data-drupal-selector="edit-field-user-address-0-address-langcode"
                                     type="hidden"
-                                    name="field_user_address[0][address][langcode]"
+                                    name="langcode"
                                     value="en"
                                     class="form-control"
                                   />
@@ -9281,7 +9197,7 @@
                                       data-drupal-selector="edit-field-user-address-0-address-address-line1"
                                       type="text"
                                       id="edit-field-user-address-0-address-address-line1"
-                                      name="field_user_address[0][address][address_line1]"
+                                      name="street_address"
                                       value="5 rue Toussaint feron à Paris 13"
                                       size="60"
                                       maxlength="128"
@@ -9310,7 +9226,7 @@
                                         data-drupal-selector="edit-field-user-address-0-address-postal-code"
                                         type="text"
                                         id="edit-field-user-address-0-address-postal-code"
-                                        name="field_user_address[0][address][postal_code]"
+                                        name="postal_code"
                                         value="75113"
                                         size="10"
                                         maxlength="128"
@@ -9335,7 +9251,7 @@
                                         data-drupal-selector="edit-field-user-address-0-address-locality"
                                         type="text"
                                         id="edit-field-user-address-0-address-locality"
-                                        name="field_user_address[0][address][locality]"
+                                        name="city"
                                         value="Paris"
                                         size="30"
                                         maxlength="128"
@@ -9364,7 +9280,7 @@
                                         autocomplete="country"
                                         data-drupal-selector="edit-field-user-address-0-address-country-code"
                                         id="edit-field-user-address-0-address-country-code--2"
-                                        name="field_user_address[0][address][country_code]"
+                                        name="country"
                                         required="required"
                                         aria-required="true"
                                         data-once="drupal-ajax"
@@ -9770,7 +9686,7 @@
                               <select
                                 data-drupal-selector="edit-field-optin-1"
                                 id="edit-field-optin-1"
-                                name="field_optin_1"
+                                name="favourite_national_team"
                                 class="form-select custom-select"
                               >
                                 <option value="_none">Select ...</option>
@@ -9831,7 +9747,7 @@
                               <select
                                 data-drupal-selector="edit-field-optin-2"
                                 id="edit-field-optin-2"
-                                name="field_optin_2"
+                                name="favourite_city"
                                 class="form-select custom-select"
                               >
                                 <option value="_none">Select ...</option>
@@ -9869,7 +9785,7 @@
                               <select
                                 data-drupal-selector="edit-preferred-langcode"
                                 id="edit-preferred-langcode"
-                                name="preferred_langcode"
+                                name="favourite_language"
                                 class="form-select custom-select"
                               >
                                 <option value="en">EN</option>
@@ -9899,7 +9815,7 @@
                                 aria-describedby="edit-field-optin-13-0-value--description"
                                 type="text"
                                 id="edit-field-optin-13-0-value"
-                                name="field_optin_13[0][value]"
+                                name="club_de_coeu"
                                 value="5372P"
                                 size="60"
                                 maxlength="255"
@@ -9937,7 +9853,7 @@
                                 data-drupal-selector="edit-field-optlabel-13-0-value"
                                 type="text"
                                 id="edit-field-optlabel-13-0-value"
-                                name="field_optlabel_13[0][value]"
+                                name="club_de_coeur"
                                 value="STADE TOULOUSAIN RUGBY (31022 TOULOUSE 2)"
                                 size="60"
                                 maxlength="255"

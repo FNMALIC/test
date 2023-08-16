@@ -143,9 +143,12 @@ def edit_profile(request):
     user = User.objects.get(id=request.user.id)
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
+        # print(form.cleaned_data['first_name'])
+        print(request.POST)
         if form.is_valid():
             # Update the user instance with the form data
             user.first_name = form.cleaned_data['first_name']
+            # print(user.first_name)
             user.last_name = form.cleaned_data['last_name']
             user.date_birth = form.cleaned_data['date_of_birth']
             user.mobile_phone = form.cleaned_data['mobile_phone']
@@ -157,8 +160,19 @@ def edit_profile(request):
             user.Favourite_city = form.cleaned_data['favourite_city']
             user.favourite_language = form.cleaned_data['favourite_language']
             user.club_coeur = form.cleaned_data['club_de_coeur']
-            user.save()
-            return redirect('/dashboard')
+            print()
+            try:
+                user.save()
+                return redirect('/dashboard')
+            except Exception as e:
+                print(e)
+            # if user.save():
+                
+            # else:
+            #     return redirect('/register')
+        else:
+            # Handle the case when the form is not valid 
+            print(form.errors) 
     else:
         form = UserProfileForm(initial={
             'first_name': user.first_name,
