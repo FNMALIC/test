@@ -126,6 +126,7 @@ def order_page(request):
 
 
 def notification_page(request):
+    print(request.path)
     return render(request,'users_pages/notification.html')
 
 
@@ -164,6 +165,7 @@ def logout_view(request):
     return redirect('login_url')
 
 def edit_profile(request):
+    print(request.path)
     user = User.objects.get(id=request.user.id)
     if request.method == 'POST':
         form = UserProfileForm(request.POST)

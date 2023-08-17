@@ -53,7 +53,7 @@
                       >
                         <a
                           href="{% url 'dashboard' %}"
-                          class="nav-link nav-link--en-user always-show"
+                          class="nav-link nav-link--en-user always-show {% if request.path == '/dashboard' %}is-active{% endif %}"
                           data-drupal-link-system-path="user"
                           >My dashboard</a
                         >
@@ -61,7 +61,7 @@
                         <a
                           href="{% url 'profile' %}"
                           title="Manage your personal data"
-                          class="nav-link nav-link--en-user-1260726-edit is-active"
+                          class="nav-link nav-link--en-user-1260726-edit {% if request.path == '/profile' %}is-active{% endif %}"
                           data-drupal-link-system-path="/"
                           style=""
                           >My profile</a
@@ -70,7 +70,7 @@
                         <a
                           href="{% url 'orders' %}"
                           title="Find your order history"
-                          class="nav-link nav-link--en-user-1260726-orders always-show"
+                          class="nav-link nav-link--en-user-1260726-orders {% if request.path == '/orders/' %}is-active{% endif %}"
                           data-drupal-link-system-path="/"
                           >My orders</a
                         >
@@ -78,7 +78,7 @@
                         <a
                           href="{% url 'notification' %}"
                           title="Manage alerting and optin subscription"
-                          class="nav-link nav-link--en-user-1260726-alerts always-show"
+                          class="nav-link nav-link--en-user-1260726-alerts always-show {% if request.path == '/notification/' %}is-active{% endif %}"
                           data-drupal-link-system-path="/"
                           >My notifications</a
                         >
@@ -86,7 +86,7 @@
                         <a
                           href="{% url 'payments' %}"
                           title="Manage my payment methods"
-                          class="nav-link nav-link--en-user-1260726-payment-methods"
+                          class="nav-link nav-link--en-user-1260726-payment-methods {% if request.path == '/payments/' %}is-active{% endif %}"
                           data-drupal-link-system-path="/"
                           style=""
                           >My payment methods</a
@@ -100,7 +100,7 @@
                         <a
                           href="{% url 'resales' %}"
                           title="Manage my resales"
-                          class="nav-link nav-link--en-user-1260726-my-resales"
+                          class="nav-link nav-link--en-user-1260726-my-resales  {% if request.path == '/resales/' %}is-active{% endif %}"
                           data-drupal-link-system-path="/"
                           style=""
                           >My resales</a
@@ -109,7 +109,7 @@
                         <a
                           href="{% url 'documents' %}"
                           title="Manage my documents"
-                          class="nav-link nav-link--en-user-1260726-files"
+                          class="nav-link nav-link--en-user-1260726-files  {% if request.path == '/document/' %}is-active{% endif %}"
                           data-drupal-link-system-path="/"
                           style=""
                           >My documents</a
