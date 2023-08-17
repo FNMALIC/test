@@ -1,0 +1,146 @@
+<div
+                  class="sidebar_first sidebar col-md-2 order-first"
+                  id="sidebar_first"
+                >
+                  <aside class="section" role="complementary">
+                    <div
+                      id="block-userpictureblock-2"
+                      class="block block-hubber-customers block-hubber-customers-user-picture"
+                    >
+                      <div class="content">
+                        <div>
+                          <div class="sidebar-menu-trigger"></div>
+                          
+                          {% if user.is_authenticated %}
+                            <div
+                            class="hubber_customers-block--summary reduced-menu-hidden"
+                          >
+                            <span class="hubber_customers-block--summary__icon"
+                              >{{ user.first_name.0 }}{{ user.last_name.0 }}</span
+                            >
+                          </div>
+                          <div
+                            class="hubber_customers-block--contents reduced-menu-hidden"
+                          >
+                            <span class="hubber_customers-block--summary__name"
+                              >{{ user.first_name }} {{ user.last_name }}</span
+                            >
+                          </div>
+                        {% else %}
+                            <a class="btn user-account-login" aria-label="Se connecter" href="{% url 'register' %}">
+                                create account
+                            </a>
+                        {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <nav
+                      role="navigation"
+                      aria-labelledby="block-menuducomptedelutilisateur-menu"
+                      id="block-menuducomptedelutilisateur"
+                      class="block block-menu navigation menu--account"
+                    >
+                      <div
+                        class="sr-only"
+                        id="block-menuducomptedelutilisateur-menu"
+                      >
+                        Menu du compte de l'utilisateur
+                      </div>
+
+                      <div
+                        block="block-menuducomptedelutilisateur"
+                        class="clearfix nav"
+                      >
+                        <a
+                          href="{% url 'dashboard' %}"
+                          class="nav-link nav-link--en-user always-show"
+                          data-drupal-link-system-path="user"
+                          >My dashboard</a
+                        >
+
+                        <a
+                          href="{% url 'profile' %}"
+                          title="Manage your personal data"
+                          class="nav-link nav-link--en-user-1260726-edit is-active"
+                          data-drupal-link-system-path="/"
+                          style=""
+                          >My profile</a
+                        >
+
+                        <a
+                          href="{% url 'orders' %}"
+                          title="Find your order history"
+                          class="nav-link nav-link--en-user-1260726-orders always-show"
+                          data-drupal-link-system-path="/"
+                          >My orders</a
+                        >
+
+                        <a
+                          href="{% url 'notification' %}"
+                          title="Manage alerting and optin subscription"
+                          class="nav-link nav-link--en-user-1260726-alerts always-show"
+                          data-drupal-link-system-path="/"
+                          >My notifications</a
+                        >
+
+                        <a
+                          href="{% url 'payments' %}"
+                          title="Manage my payment methods"
+                          class="nav-link nav-link--en-user-1260726-payment-methods"
+                          data-drupal-link-system-path="/"
+                          style=""
+                          >My payment methods</a
+                        >
+
+                        <span
+                          class="nav-link nav-link--en-user-1260726-etickets customer_vignette__disabled always-show"
+                          >My tickets</span
+                        >
+
+                        <a
+                          href="{% url 'resales' %}"
+                          title="Manage my resales"
+                          class="nav-link nav-link--en-user-1260726-my-resales"
+                          data-drupal-link-system-path="/"
+                          style=""
+                          >My resales</a
+                        >
+
+                        <a
+                          href="{% url 'documents' %}"
+                          title="Manage my documents"
+                          class="nav-link nav-link--en-user-1260726-files"
+                          data-drupal-link-system-path="/"
+                          style=""
+                          >My documents</a
+                        >
+
+                        <span
+                          class="nav-link nav-link- customer_vignette__disabled always-show mobile-account-toggle"
+                          >Menu mobile toggle</span
+                        >
+                      </div>
+                    </nav>
+                    <nav
+                      role="navigation"
+                      aria-labelledby="block-menulogout-2-menu"
+                      id="block-menulogout-2"
+                      class="block block-menu navigation menu--menu-logout"
+                    >
+                      <div class="sr-only" id="block-menulogout-2-menu">
+                        menu logout
+                      </div>
+
+                      <ul block="block-menulogout-2" class="clearfix nav">
+                        <li class="nav-item">
+                          <a
+                            href="{% url 'logout' %}"
+                            class="nav-link nav-link--en-user-logout"
+                            data-drupal-link-system-path="user/logout"
+                            >Log out</a
+                          >
+                        </li>
+                      </ul>
+                    </nav>
+                  </aside>
+                </div>

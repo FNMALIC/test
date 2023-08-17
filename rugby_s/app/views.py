@@ -117,8 +117,28 @@ def accessibility_booking_page(request):
 def faq_page(request):
     return render(request,'visiter/faq.html')
 
+# @login_required
 def dashboard_page(request):
     return render(request,'users_pages/dashboard.html')
+
+def order_page(request):
+    return render(request,'users_pages/orders.html')
+
+
+def notification_page(request):
+    return render(request,'users_pages/notification.html')
+
+
+def payment_page(request):
+    return render(request,'users_pages/payment.html')
+
+
+def resales_page(request):
+    return render(request,'users_pages/resales.html')
+
+
+def document_page(request):
+    return render(request,'users_pages/document.html')
 
 def login_page(request):
     # return render(request,"")
@@ -138,6 +158,10 @@ def login_page(request):
         form = UserForm()
     return render(request, 'users_pages/login.html', {'form': form})
 
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
+    return redirect('login_url')
 
 def edit_profile(request):
     user = User.objects.get(id=request.user.id)
